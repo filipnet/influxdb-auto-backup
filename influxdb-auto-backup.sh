@@ -17,7 +17,7 @@ if [ ! -d $BACKUP_DIR ]; then
 fi
 
 # Iterate through each bucket and create backup
-for BUCKET in "${BUCKETS[@]}"; do
+for BUCKET in "${INFLUXDB_BUCKET[@]}"; do
     # Backup file name
     BACKUP_FILE="$BACKUP_DIR/influxdb_backup_${BUCKET}_${TIMESTAMP}"
 
