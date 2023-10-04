@@ -8,6 +8,10 @@ Automate your InfluxDB backups with this simple Bash script. This script allows 
 - **Easy Configuration:** Configure your InfluxDB server details and backup settings in one place.
 - **Portable Backups:** The script creates portable and compressed backup files for easy storage and transfer.
 
+## Create Configuration
+- Create a `config.sh` file in the same directory as `backup-script.sh`.
+- Copy the contents from `config.sh.example` and update the variables with your InfluxDB server details and backup settings.
+
 ## Usage
 
 1. **Clone the Repository:** ```git clone https://github.com/filipnet/influxdb-auto-backup.git```
