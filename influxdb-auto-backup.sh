@@ -8,42 +8,31 @@
 # Include configuration variables
 source config.sh
 
+# Get current timestamp
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
 # Create backup directory if it doesn't exist
 if [ ! -d $BACKUP_DIR ]; then
     mkdir -p $BACKUP_DIR
 fi
 
-# Get current timestamp
-TIMESTAMP=$(date +%Y%m%d%H%M%S)
-
-# Loop through each database and create backup
-for DATABASE in "${DATABASES[@]}"; do
+# Iterate through each bucket and create backup
+for BUCKET in "${BUCKETS[@]}"; do
     # Backup file name
-    BACKUP_FILE="$BACKUP_DIR/influxdb_backup_${DATABASE}_${TIMESTAMP}.tar.gz"
+    BACKUP_FILE="$BACKUP_DIR/influxdb_backup_${BUCKET}_${TIMESTAMP}"
 
     # Perform InfluxDB backup
-    influxd backup -t $INFLUXDB_TOKEN -o $INFLUXDB_ORG -b $INFLUXDB_BUCKET $BACKUP_FILE
+    influxd backup -t $INFLUXDB_TOKEN -o $INFLUXDB_ORG -b $BUCKET $BACKUP_FILE
 
     # Check if the backup was successful
-    if [ -d "$BACKUP_DIR/$DATABASE" ]; then
-        # Create tar.gz archive
-        tar czf $BACKUP_FILE -C $BACKUP_DIR $DATABASE
-
-        # Remove temporary backup directory
-        rm -rf "$BACKUP_DIR/$DATABASE"
-
-        # Check if the backup file was created
-        if [ -f $BACKUP_FILE ]; then
-            echo "Backup of '$DATABASE' database created successfully: $BACKUP_FILE"
-        else
-            echo "Error creating backup for '$DATABASE' database."
-        fi
+    if [ -d "$BACKUP_FILE" ]; then
+        echo "Backup for '$BUCKET' successful. Backup files are stored in: $BACKUP_FILE"
     else
-        echo "Error: '$DATABASE' database not found or unable to create backup."
+        echo "Error creating backup for '$BUCKET'."
     fi
 done
 
 # Remove old backups
-find $BACKUP_DIR -type f -name 'influxdb_backup_*.tar.gz' -mtime +$RETENTION_DAYS -exec rm -f {} \;
+find $BACKUP_DIR -type d -mtime +$RETENTION_DAYS -exec rm -rf {} \;
 
 echo "Old backups older than $RETENTION_DAYS days have been removed."
