@@ -3,9 +3,8 @@
 # InfluxDB Settings
 INFLUXDB_TOKEN="your_influxdb_token"
 INFLUXDB_ORG="your_influxdb_org"
-INFLUXDB_BUCKET="your_influxdb_bucket"
+BUCKETS=("bucket1" "bucket2" "bucket3")  # List of buckets to be saved
 
 # Backup Settings
 BACKUP_DIR="/path/to/backup/directory"
 RETENTION_DAYS=7
-DATABASES=("database1" "database2" "database3")
