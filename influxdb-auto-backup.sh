@@ -4,19 +4,9 @@
 # This script creates backups of specified InfluxDB databases and retains them
 # based on the specified retention period. You can configure multiple databases
 # by adding them to the DATABASES array.
-#
-# Configuration:
-# - INFLUXDB_HOST: Hostname or IP address of the InfluxDB server
-# - INFLUXDB_PORT: Port number of the InfluxDB server
-# - BACKUP_DIR: Directory to store the backup files
-# - RETENTION_DAYS: Number of days to retain the backups
-# - DATABASES: Array of databases to be backed up
 
-INFLUXDB_HOST="localhost"
-INFLUXDB_PORT="8086"
-BACKUP_DIR="/path/to/backup/directory"
-RETENTION_DAYS=7
-DATABASES=("database1" "database2" "database3")
+# Include configuration variables
+source config.sh
 
 # Create backup directory if it doesn't exist
 if [ ! -d $BACKUP_DIR ]; then
