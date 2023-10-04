@@ -10,7 +10,7 @@ Automate your InfluxDB backups with this simple Bash script. This script allows 
 
 ## Usage
 
-1. **Clone the Repository:** ```git clone filipnet/influxdb-auto-backup```
+1. **Clone the Repository:** ```git clone https://github.com/filipnet/influxdb-auto-backup.git```
 2. **Navigate to the Repository:** ```cd influxdb-auto-backup```
 3. **Configure the Script:**
 Open `backup-script.sh` in a text editor and configure the following variables:
