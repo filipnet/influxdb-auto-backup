@@ -21,8 +21,8 @@ for DATABASE in "${DATABASES[@]}"; do
     # Backup file name
     BACKUP_FILE="$BACKUP_DIR/influxdb_backup_${DATABASE}_${TIMESTAMP}.tar.gz"
 
-    # Create backup
-    influxd backup -portable -host $INFLUXDB_HOST:$INFLUXDB_PORT -database $DATABASE $BACKUP_DIR
+    # Perform InfluxDB backup
+    influxd backup -t $INFLUXDB_TOKEN -o $INFLUXDB_ORG -b $INFLUXDB_BUCKET $BACKUP_FILE
 
     # Check if the backup was successful
     if [ -d "$BACKUP_DIR/$DATABASE" ]; then
