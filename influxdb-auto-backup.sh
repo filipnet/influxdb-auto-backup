@@ -22,7 +22,7 @@ for BUCKET in "${INFLUXDB_BUCKET[@]}"; do
     BACKUP_FILE="$BACKUP_DIR/influxdb_backup_${BUCKET}_${TIMESTAMP}"
 
     # Perform InfluxDB backup
-    influxd backup -t $INFLUXDB_TOKEN -o $INFLUXDB_ORG -b $BUCKET $BACKUP_FILE
+    influx backup -t $INFLUXDB_TOKEN -o $INFLUXDB_ORG -b $BUCKET $BACKUP_FILE
 
     # Check if the backup was successful
     if [ -d "$BACKUP_FILE" ]; then
