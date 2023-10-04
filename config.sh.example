@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Configuration:
+# - INFLUXDB_HOST: Hostname or IP address of the InfluxDB server
+# - INFLUXDB_PORT: Port number of the InfluxDB server
+# - BACKUP_DIR: Directory to store the backup files
+# - RETENTION_DAYS: Number of days to retain the backups
+# - DATABASES: Array of databases to be backed up
+
 # InfluxDB Server Details
 INFLUXDB_HOST="localhost"
 INFLUXDB_PORT="8086"
