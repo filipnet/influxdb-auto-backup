@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# InfluxDB Server Details
+INFLUXDB_HOST="localhost"
+INFLUXDB_PORT="8086"
+
+# Backup Settings
+BACKUP_DIR="/path/to/backup/directory"
+RETENTION_DAYS=7
+DATABASES=("database1" "database2" "database3")
