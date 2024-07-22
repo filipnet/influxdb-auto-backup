@@ -3,7 +3,7 @@
 # InfluxDB Settings
 INFLUXDB_TOKEN="your_influxdb_token"
 INFLUXDB_ORG="your_influxdb_org"
-BUCKETS=("bucket1" "bucket2" "bucket3")  # List of buckets to be saved
+INFLUXDB_BUCKET=("bucket1" "bucket2" "bucket3")  # List of buckets to be saved
 
 # Backup Settings
 BACKUP_DIR="/path/to/backup/directory"
